@@ -70,7 +70,7 @@ const LoginScreen = ({navigation}) => {
     <ImageBackground
       source={images.wallpaper}
       resizeMode="cover"
-      opacity={0.9}
+      opacity={0.7}
       style={{
         flex: 1,
         paddingVertical: SIZES.padding,
@@ -205,6 +205,38 @@ const LoginScreen = ({navigation}) => {
                   </Text>
                 </View>
               </TouchableOpacity>
+              <View
+                style={{
+                  marginTop: 40,
+                  marginBottom: -20,
+                  alignItems: 'center',
+                  alignSelf: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#000',
+                  height: 45,
+                  width: 270,
+                  borderRadius: 50,
+                }}>
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    fontSize: 13,
+                    textAlign: 'center',
+                  }}>
+                  Don't have an account?{' '}
+                  <Text
+                    style={{
+                      color: COLORS.white,
+                      fontSize: 16,
+                      fontWeight: 'bold',
+                    }}
+                    onPress={() =>
+                      navigation.navigate('Auth', {screen: 'Register'})
+                    }>
+                    Sign Up
+                  </Text>
+                </Text>
+              </View>
             </View>
           </View>
         </KeyboardAwareScrollView>
