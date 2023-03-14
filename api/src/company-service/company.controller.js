@@ -28,7 +28,7 @@ const Register = asyncHandler(async (req, res) => {
   //Generate ICE
   function generateUniqueNumber() {
     const randomNumber =
-      Math.floor(Math.random() * 100000000000000000) + 100000000000000000;
+      Math.floor(Math.random() * 100000000000000) + 100000000000000;
     return randomNumber;
   }
 
