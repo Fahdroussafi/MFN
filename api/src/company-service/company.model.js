@@ -34,10 +34,10 @@ const companySchema = mongoose.Schema(
       Longitude: {
         type: Number,
       },
-      ICE: {
-        type: Number,
-        unique: true,
-      },
+    },
+    ICE: {
+      type: Number,
+      unique: true,
     },
   },
   {
