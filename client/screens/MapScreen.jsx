@@ -1,10 +1,19 @@
-// Import React
 import React from 'react';
-// Import required components
-import {SafeAreaView, StyleSheet, View} from 'react-native';
-// Import Map and Marker
-import MapView, {Marker} from 'react-native-maps';
-const MapScreen = () => {
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+} from 'react-native';
+import MapView from 'react-native-maps';
+
+const MapScreen = ({navigation, route}) => {
+  const handleMapPress = event => {
+    // pass selected location back to RegisterScreen
+    route.params.handleLocationSelect(event.nativeEvent.coordinate);
+    // navigate back to RegisterScreen
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
@@ -16,23 +25,15 @@ const MapScreen = () => {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-          customMapStyle={mapStyle}>
-          <Marker
-            draggable
-            coordinate={{
-              latitude: 32.3123,
-              longitude: -9.2311,
-            }}
-            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
-            title={'Test Marker'}
-            description={'This is a description of the marker'}
-          />
-        </MapView>
+          onPress={handleMapPress}
+          customMapStyle={mapStyle}></MapView>
       </View>
     </SafeAreaView>
   );
 };
+
 export default MapScreen;
+
 const mapStyle = [
   {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
   {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
