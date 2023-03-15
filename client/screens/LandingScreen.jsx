@@ -18,7 +18,7 @@ const LandingScreen = ({navigation}) => {
         style={styles.imageBackground}
         opacity={0.5}
         resizeMode="cover">
-        <TouchableOpacity onPress={() => navigation.navigate('Map')}>
+        <TouchableOpacity onPress={() => navigation.navigate('UserMap')}>
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
         <View style={styles.contentContainer}>
