@@ -6,10 +6,6 @@ const companySchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a company name"],
     },
-    founder: {
-      type: String,
-      required: [true, "Please add a founder name"],
-    },
     email: {
       type: String,
       required: [true, "Please add an email"],
@@ -28,11 +24,13 @@ const companySchema = mongoose.Schema(
       required: [true, "Please add an address"],
     },
     location: {
-      Latitude: {
+      latitude: {
         type: Number,
+        // required: [true, "Please add a latitude"],
       },
-      Longitude: {
+      longitude: {
         type: Number,
+        // required: [true, "Please add a longitude"],
       },
     },
     ICE: {
