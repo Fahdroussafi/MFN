@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import LandingScreen from '../screens/LandingScreen';
+import UserMapScreen from '../screens/UserMapScreen';
 import MapScreen from '../screens/MapScreen';
 
 import Auth from './AuthStack';
@@ -20,7 +21,7 @@ function RootStack() {
           <Stack.Navigator screenOptions={{headerShown: false}}>
             {storedCredentials ? (
               <>
-                <Stack.Screen name="Map" component={MapScreen} />
+                <Stack.Screen name="UserMap" component={UserMapScreen} />
               </>
             ) : (
               <>
@@ -37,10 +38,19 @@ function RootStack() {
                     animation: 'slide_from_bottom',
                   }}
                 />
+
+                <Stack.Screen
+                  name="Map"
+                  component={MapScreen}
+                  options={{
+                    animation: 'slide_from_bottom',
+                  }}
+                />
+
                 {!storedCredentials && (
                   <Stack.Screen
-                    name="Map"
-                    component={MapScreen}
+                    name="UserMap"
+                    component={UserMapScreen}
                     options={{animation: 'slide_from_right'}}
                   />
                 )}
