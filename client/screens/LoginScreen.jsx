@@ -36,7 +36,6 @@ const LoginScreen = ({navigation}) => {
   const {mutate, isLoading, error} = useMutation(login, {
     onSuccess: data => {
       persistLogin(data);
-      navigation.navigate('Map');
     },
     onError: error => {
       Alert.alert('Error', error.response.data.message);
