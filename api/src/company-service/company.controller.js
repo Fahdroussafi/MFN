@@ -7,9 +7,9 @@ const bcrypt = require("bcryptjs");
 // @route   POST /api/company/register
 // @access  Public
 const Register = asyncHandler(async (req, res) => {
-  const { companyName, founder, email, password, phone, address } = req.body;
+  const { companyName, email, password, phone, address, location } = req.body;
 
-  if (!companyName || !founder || !email || !password || !phone || !address) {
+  if ((!companyName || !email || !password || !phone || !address, !location)) {
     res.status(400);
     throw new Error("Please add all fields");
   }
@@ -35,12 +35,12 @@ const Register = asyncHandler(async (req, res) => {
   //Create Company
   const company = await Company.create({
     companyName,
-    founder,
     phone,
     address,
     ICE: generateUniqueNumber(),
     email,
     password: hashedPassword,
+    location,
   });
 
   if (company) {
@@ -50,6 +50,7 @@ const Register = asyncHandler(async (req, res) => {
       email: company.email,
       token: generateToken(company._id),
       ICE: company.ICE,
+      location: company.location,
       message: "Your company has been created successfully",
       status: "SUCCESS",
     });
@@ -99,7 +100,6 @@ const Login = asyncHandler(async (req, res) => {
     });
   }
 });
-
 
 // @desc    Get all companies
 // @route   GET /api/company/getcompanies
